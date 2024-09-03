@@ -16,8 +16,9 @@ import dev.zeronelab.mybatis.dao.DeptMapper;
 import dev.zeronelab.mybatis.dao.NewsMapper;
 import dev.zeronelab.mybatis.vo.DeptEntity;
 import dev.zeronelab.mybatis.vo.NewsEntity;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class NewsController {
 
 	private Logger logger = LoggerFactory.getLogger(NewsController.class);
@@ -27,6 +28,15 @@ public class NewsController {
 	
 	@Autowired
 	private DeptMapper deptMapper;
+
+	@RequestMapping("/home")
+	public Map<String, String> home() {
+		System.out.println("/*** home running2...");
+
+		Map<String, String> rtnObj = new HashMap<>();
+		rtnObj.put("home", "This is a home page.");
+		return rtnObj;
+	}
 
 	@RequestMapping("/api/news")
 	public @ResponseBody Map<String, Object> news() throws Exception {
