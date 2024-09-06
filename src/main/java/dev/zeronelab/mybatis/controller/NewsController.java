@@ -1,4 +1,4 @@
-package dev.zeronelab.mybatis.web;
+package dev.zeronelab.mybatis.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,7 +44,17 @@ public class NewsController {
 		List<NewsEntity> newsList = newDAO.listNews();
 		logger.info("news->" + newsList.toString());
 
-		rtnObj.put("news_list", newsList);
+		rtnObj.put("newsList", newsList);
+		return rtnObj;
+	}
+
+	@RequestMapping("/api/dept")
+	public @ResponseBody Map<String, Object> dept() {
+		Map<String, Object> rtnObj = new HashMap<>();
+
+		List<DeptEntity> deptList = deptMapper.listDept();
+
+		rtnObj.put("deptList", deptList);
 		return rtnObj;
 	}
 
