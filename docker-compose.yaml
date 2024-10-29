@@ -1,0 +1,11 @@
+version: '3'
+services:
+  spring-boot-app:
+    container_name: spring-boot-app
+    image: 192.168.1.10:8443/spring-boot-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:oracle:thin:@192.168.45.104:1521:xe"
+      SPRING_DATASOURCE_USERNAME: "SCOTT"
+      SPRING_DATASOURCE_PASSWORD: "TIGER"

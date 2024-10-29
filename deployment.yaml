@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-app
+    spec:
+      containers:
+        - name: spring-boot-app
+          image: 192.168.1.10:8443/spring-boot-app  # 여기에서 React 프로젝트의 이미지로 변경
+          #command: ["sh", "-c", "cd /099 && npm install && npm start"]
+          ports:
+            - containerPort: 8080
